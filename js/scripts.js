@@ -1,7 +1,7 @@
 //--------------------------------DEV-MODE---------------------------
 let testmode = false;
 //--------------------------------DEV-MODE---------------------------
-const timer = 1000;
+const timer = 2000;
 
 function generateSecretCode() {
     const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
