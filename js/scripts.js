@@ -1,7 +1,7 @@
 //--------------------------------DEV-MODE---------------------------
 let testmode = false;
 //--------------------------------DEV-MODE---------------------------
-const timer = 2000;
+let gameIsRunning = false;
 
 function generateSecretCode() {
     const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -22,13 +22,19 @@ if (testmode) {
     console.log("Secret code:", secretCodeArray);
 }
 
-setTimeout(() => {
 
+
+function startGame() {
     if (confirm("Start the Bulls & Cows game?")) {
+
+        gameIsRunning = true;
+
+        let userTries = 0;
 
         while (true) {
 
             const userNumber = prompt("Enter your guess (4 unique digits):");
+
 
             const result = checkGuess(userNumber);
 
@@ -36,30 +42,48 @@ setTimeout(() => {
 
                 alert("Game cancelled.");
 
+                gameIsRunning = false;
+
+                userTries = 0;
+
                 break;
 
             } else if (result === 1) {
 
                 alert("Invalid number. Please enter 4 unique digits.");
-                
-                
+
+
             } else if (result === 2) {
+                userTries++;
+                alert(` VICTORY, afther ${userTries}, you guessed the secret code:  ${secretCodeArray.join("-")}`);
                 
-                alert(` VICTORY, secret code was:  ${secretCodeArray.join("-")}`);
+                console.log("------------------------------")
+                console.log(`Final score: ${userTries}`);
+
+                console.log("------------------------------")
+
+                gameIsRunning = false;
+
+                // parse usertries to json and store in localstorage
 
                 break;
 
             } else {
 
-                alert('try again'); 
+                userTries++;
+
+                console.log(`Failed attempts: ${userTries}`);
+
+                alert('try again');
             }
         }
     }
-}, timer);
+}
 
+document.getElementById("startButton").addEventListener("click", startGame);
 //-------------- bull & cows test
 
-function checkGuess(userString) {
+function checkGuess(userString,) {
 
     if (userString == null) return 0;
 

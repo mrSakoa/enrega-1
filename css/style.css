@@ -1,15 +1,38 @@
-
-body{
+body {
     background-color: black;
 }
-p{
+
+h2 {
+    display: center;
+    width: 60%;
+    justify-content: center;
+    text-align: center;
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 1.5em;
     color: greenyellow;
+    margin: auto;
 }
-h1{
+
+h1 {
     font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 4em;
+    font-size: 5em;
     font-weight: bold;
     color: greenyellow;
+    margin: auto;
+    padding: 1em;
+    width: fit-content;
+}
+
+.startButton{
+    display: block;
+    margin: 2em auto;
+    padding: 1em 2em;
+    font-size: 1.5em;
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: greenyellow;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+
 }
