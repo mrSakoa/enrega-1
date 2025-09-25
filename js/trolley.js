@@ -8,31 +8,41 @@ function saveTrolley() {
 // ------------------------------ fetch Fake Store API products
 async function loadProducts() {
   try {
-    const res = await fetch("https://fakestoreapi.com/products?limit=8");
+    const res = await fetch("https://fakestoreapi.com/products");
     if (!res.ok) throw new Error("Failed to load products");
 
     products = await res.json();
     showProducts();
 
-    // hide loader, show content
+    //-------- show/hide loader, show content
+    
     const loading = document.getElementById("loading");
+
     const content = document.getElementById("content");
+
     if (loading) loading.style.display = "none";
+
     if (content) content.style.display = "block";
   } catch (err) {
+
     console.error(err);
+
     const productsEl = document.getElementById("products");
+
     if (productsEl) productsEl.textContent = "Products could not be loaded.";
 
-    // still reveal the page so the user isn't stuck on the loader
     const loading = document.getElementById("loading");
+
     const content = document.getElementById("content");
+
     if (loading) loading.style.display = "none";
+
     if (content) content.style.display = "block";
   }
 }
 
 // --------------------- cards template
+
 function showProducts() {
   const container = document.getElementById("products");
   if (!container) return;
@@ -63,6 +73,7 @@ function showProducts() {
 }
 
 // --------------------------------- Add product to trolley
+
 function addToTrolley(id) {
   
   const product = products.find((p) => p.id === id);
@@ -70,8 +81,8 @@ function addToTrolley(id) {
     alert("Product not found.");
     return;
   }
+  
   trolley.push(product);
-
   saveTrolley();
 
   updateTrolley();
@@ -113,20 +124,27 @@ function updateTrolley() {
 }
 
 // ------------------------------------- Remove single product
+
 function removeFromTrolley(index) {
   trolley.splice(index, 1);
+
   saveTrolley();
+
   updateTrolley();
 }
 
 // --------------------------------- Clear the trolley
+
 function clearTrolley() {
   trolley = [];
+
   saveTrolley();
+
   updateTrolley();
 }
 
 // ------------------------------- Buttons (guard listeners)
+
 const viewBtn = document.getElementById("viewTrolley");
 if (viewBtn) {
   viewBtn.addEventListener("click", () => {
@@ -137,10 +155,12 @@ if (viewBtn) {
 
 const clearBtn = document.getElementById("clearTrolley");
 if (clearBtn) {
+
   clearBtn.addEventListener("click", clearTrolley);
 }
 
 function formatPrice(n) {
+
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 }
 

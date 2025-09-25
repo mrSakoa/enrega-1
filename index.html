@@ -4,49 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ctrl + Style</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    <main>
 
-    <div id="loading">
-        <h1>Loading products...</h1>
-        <div class="spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div id="loading">
+            <h1>Loading products...</h1>
+            <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>dd
+
+
+
+        <div id="content" style="display:none;">
+            <!-- inside "content", it gets hidden by loading -->
+            <div class="mainText">
+                <h1 class="webpageTitle">Ctrl + Style</h1>
+                <h2> Bulls & cows</h2>
+                <h3>Guess the 4-digit non repeateable number, from 0 to 9. After each guess, you'll receive feedback in
+                    the
+                    form of "Bulls" and "Cows". A "Bull" indicates a correct digit in the correct position, while a
+                    "Cow"
+                    indicates a correct digit in the wrong position. Press Click to Start Good luck!</h3>
+                <button class="startButton" id="startButton">Click to Start</button>
+
+                <p>ps: type sv_cheats</p>
+            </div>
+
+            <!--------------------------------------------- GAME HUD -->
+            <div class="gamezone">
+                <h2 style="justify-content: center;"> Bulls & cows</h2>
+                <div class="gamehud">
+                    <div class="attempts">
+                        <h3>Attempts:</h3>
+                        <p id="attemptCount">0</p>
+                    </div>
+                    <div class="pastNumbers">
+                        <h3>Old tries</h3>
+                        <ul id="pastList"></ul>
+                    </div>
+                    <div class="recentNumber">
+                        <h3>Last attempt</h3>
+                        <p id="recentGuess">—</p>
+                    </div>
+                    <div class="submitBox">
+                        <input class="submitedNumber" id="guessInput" type="tel" placeholder="write your number"
+                            autocomplete="off">
+                    </div>
+                    <div class="bulls">
+                        <h2>Bulls</h2>
+                        <p id="bullsCount">0</p>
+                    </div>
+                    <div class="cows">
+                        <h2>Cows</h2>
+                        <p id="cowsCount">0</p>
+                    </div>
+                    <div class="highScore">
+                        <h3>High Score</h3>
+                        <ol id="highScores"></ol>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    <button id="guessBtn">Guess</button>
+                    <button id="surrenderBtn">Surrender</button>
+                </div>
+            </div>
+
+            <h2>Catalog</h2>
+            <div id="products"></div>
+
+            <button id="viewTrolley">View / Hide Trolley</button>
+            <button id="clearTrolley">Clear Trolley</button>
+
+            <div id="trolley">
+                <h2>Trolley</h2>
+                <ul id="trolleyList"></ul>
+                <p id="total">Total: $0</p>
+            </div>
+
         </div>
-    </div>
 
-    <div id="content" style="display:none;">
-        <h1>Catalog</h1>
-        <div id="products"></div>
+    </main>
 
-        <button id="viewTrolley">View / Hide Trolley</button>
-        <button id="clearTrolley">Clear Trolley</button>
-
-        <div id="trolley">
-            <h2>Trolley</h2>
-            <ul id="trolleylist"></ul>
-            <p id="total">Total: $0</p>
-        </div>
-
-        <h1>Bulls & cows</h1>
-        <div id="mainText">
-            <h2>Guess the 4-digit non repeateable number, from 0 to 9. After each guess, you'll receive feedback in
-                the form
-                of "Bulls" and "Cows". A "Bull" indicates a correct digit in the correct position, while a "Cow"
-                indicates a
-                correct digit in the wrong position. Press Click to Start Good luck!</h2>
-            <button class="startButton" id="startButton">Click to Start</button>
-            <p>ps: type sv_cheats</p>
-        </div>
-    </div>
-    <script src="js/bullNCow.js"></script>
+    <script src="js/bullNCow.js" defer></script>
     <script src="js/trolley.js"></script>
 </body>
 

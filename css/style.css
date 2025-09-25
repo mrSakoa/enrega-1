@@ -3,8 +3,17 @@ body {
     color: rgb(00, 255, 00);
     font-family: 'Consolas', 'Courier New', monospace;
 
-
     margin: 20px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-block: 0;
 }
 
 .hidden {
@@ -19,18 +28,39 @@ body {
     display: block;
 }
 
-h2 {
-    display: center;
-    width: 60%;
-    justify-content: center;
-    text-align: center;
+h1 {
+    font-size: 50px;
+    font-weight: bold;
 
-    font-size: 1.5em;
-    margin: auto;
 }
 
-h1 {
-    font-size: 5em;
+h2 {
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+
+.mainText {
+    h2 {
+        justify-content: center;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    h3 {
+        width: 60%;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.5em;
+        margin: auto;
+    }
+}
+
+.webpageTitle {
+    font-size: 100px;
     font-weight: bold;
     margin: auto;
     padding: 1em;
@@ -123,6 +153,25 @@ h1 {
     background: #005200;
 }
 
+#viewTrolley {
+    font-family: 'Consolas', 'Courier New', monospace;
+    padding: 15px;
+    background-color: rgb(00, 255, 00);
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#clearTrolley {
+    font-family: 'Consolas', 'Courier New', monospace;
+    padding: 15px;
+    background-color: rgb(00, 255, 00);
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
 /* SPINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER */
 
@@ -193,4 +242,127 @@ h1 {
     100% {
         transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
     }
+}
+
+/* -------------------------------------------GAME HUD */
+
+/* game hud needs to be grid to work properly */
+.gamehud {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 3fr 1fr 1fr;
+    gap: 20px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "attempts attempts highScore highScore"
+        "bulls pastNumbers pastNumbers cows"
+        "bulls pastNumbers pastNumbers cows"
+        "bulls recentNumber recentNumber cows"
+        "bulls submitBox submitBox cows";
+    border: 2px solid #00ff00;
+    height: 90vh;
+    grid-template-rows:
+        minmax(0, 1fr) minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+
+
+}
+
+.gamehud>* {
+    min-height: 0;
+    padding: 20px;
+    border: 2px solid #00ff00;
+}
+
+.gamehud>*>p {
+    font-size: 190px;
+    text-align: center;
+}
+
+.attempts {
+    grid-area: attempts;
+}
+
+.attempts #attemptCount {
+    font-size: 40px;
+    text-align: center;
+    align-items: flex-start;
+    margin: 0px;
+}
+
+.pastNumbers {
+    grid-area: pastNumbers;
+}
+
+.pastNumbers #pastList {
+    font-size: 18px;
+    text-align: center;
+}
+
+.recentNumber {
+    grid-area: recentNumber;
+}
+
+.recentNumber #recentGuess {
+    font-size: 60px;
+    text-align: center;
+    align-items: flex-start;
+    margin: 0px;
+    letter-spacing: 50px;
+}
+
+.submitBox {
+    display: flex;
+    grid-area: submitBox;
+    border: 2px solid #00ff00;
+}
+
+.submitBox .submitedNumber {
+    color: rgb(00, 255, 00);
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 10px;
+    border: none;
+    background: none;
+}
+
+.submitBox .submitedNumber:focus {
+    background: #005200;
+    outline: none;
+}
+
+.bulls {
+    grid-area: bulls;
+}
+
+.cows {
+    grid-area: cows;
+}
+
+.highScore {
+    grid-area: highScore;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#surrenderBtn,
+#guessBtn {
+    margin: 10px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    padding: 15px;
+    background-color: rgb(00, 255, 00);
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 26px;
+    height: 70px;
+    width: 200px;
+
 }
